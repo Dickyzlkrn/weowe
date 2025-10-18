@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [selectedImage, setSelectedImage] = useState(null);
   const { scrollYProgress } = useScroll();
   const scaleProgress = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
   const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 };
