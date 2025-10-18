@@ -376,23 +376,54 @@ const Home = () => {
       </section>
 
       {/* About Section */}
-      <section className="px-6 md:px-12 lg:px-20 py-20 md:py-32 bg-white text-black">
-        <div className="max-w-[1920px] mx-auto">
+      <section className="px-6 md:px-12 lg:px-20 py-20 md:py-32 bg-white text-black relative overflow-hidden">
+        {/* Animated corner accents */}
+        <motion.div
+          className="absolute top-0 left-0 w-32 h-32 border-l-4 border-t-4 border-[#00FF00]"
+          initial={{ scale: 0, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        />
+        <motion.div
+          className="absolute bottom-0 right-0 w-32 h-32 border-r-4 border-b-4 border-[#00FF00]"
+          initial={{ scale: 0, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        />
+
+        <div className="max-w-[1920px] mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
             <div>
               <motion.h2
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="text-6xl md:text-8xl font-black mb-8 tracking-tighter"
+                transition={{ duration: 0.8, type: "spring" }}
+                className="text-6xl md:text-8xl font-black mb-8 tracking-tighter relative"
                 style={{ fontFamily: 'Space Grotesk, sans-serif' }}
               >
-                ABOUT
+                {'ABOUT'.split('').map((char, index) => (
+                  <motion.span
+                    key={index}
+                    className="inline-block"
+                    whileHover={{
+                      scale: 1.2,
+                      color: "#00FF00",
+                      rotate: [0, -5, 5, 0],
+                    }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {char}
+                  </motion.span>
+                ))}
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
                 className="text-xl md:text-2xl font-bold tracking-tight leading-relaxed"
               >
                 {mockAbout.bio}
@@ -400,29 +431,67 @@ const Home = () => {
             </div>
             
             <div className="space-y-8">
-              <div>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 }}
+                whileHover={{ scale: 1.05, x: 10 }}
+              >
                 <p className="text-sm font-mono tracking-[0.2em] text-gray-600 mb-2">EXPERIENCE</p>
-                <p className="text-3xl md:text-4xl font-black">{mockAbout.experience}</p>
-              </div>
+                <motion.p
+                  className="text-3xl md:text-4xl font-black"
+                  animate={{
+                    scale: [1, 1.05, 1],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                >
+                  {mockAbout.experience}
+                </motion.p>
+              </motion.div>
               
-              <div>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 }}
+                whileHover={{ scale: 1.05, x: 10 }}
+              >
                 <p className="text-sm font-mono tracking-[0.2em] text-gray-600 mb-2">LOCATION</p>
                 <p className="text-3xl md:text-4xl font-black">{mockAbout.location}</p>
-              </div>
+              </motion.div>
               
-              <div>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.6 }}
+              >
                 <p className="text-sm font-mono tracking-[0.2em] text-gray-600 mb-4">EXPERTISE</p>
                 <div className="grid grid-cols-2 gap-3">
                   {mockAbout.skills.map((skill, i) => (
-                    <div
+                    <motion.div
                       key={i}
-                      className="border-2 border-black px-4 py-3 text-sm font-mono tracking-[0.1em] hover:bg-[#00FF00] transition-colors duration-200"
+                      className="border-2 border-black px-4 py-3 text-sm font-mono tracking-[0.1em] hover:bg-[#00FF00] transition-colors duration-200 cursor-pointer"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.7 + i * 0.1 }}
+                      whileHover={{
+                        scale: 1.05,
+                        rotate: [0, -2, 2, 0],
+                        borderColor: "#00FF00",
+                      }}
                     >
                       {skill}
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
