@@ -874,7 +874,7 @@ const Home = () => {
                 },
               }}
             >
-              hello@alexrivera.design
+              dicky.zulkarnaen@design.com
               <motion.span
                 className="absolute -right-12 top-1/2 -translate-y-1/2"
                 initial={{ opacity: 0, x: -10 }}
