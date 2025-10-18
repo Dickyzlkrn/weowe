@@ -498,45 +498,128 @@ const Home = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="px-6 md:px-12 lg:px-20 py-20 md:py-32 border-t-4 border-[#00FF00]">
-        <div className="max-w-[1920px] mx-auto">
+      <section className="px-6 md:px-12 lg:px-20 py-20 md:py-32 border-t-4 border-[#00FF00] relative overflow-hidden">
+        {/* Animated glitch effect background */}
+        <motion.div
+          className="absolute inset-0 opacity-5"
+          animate={{
+            backgroundPosition: ['0% 0%', '100% 100%'],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          style={{
+            backgroundImage: 'repeating-linear-gradient(45deg, #00FF00 0px, #00FF00 2px, transparent 2px, transparent 10px)',
+          }}
+        />
+
+        <div className="max-w-[1920px] mx-auto relative z-10">
           <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.8, type: "spring" }}
             className="text-6xl md:text-8xl lg:text-[10rem] font-black mb-12 tracking-tighter"
             style={{ fontFamily: 'Space Grotesk, sans-serif' }}
           >
-            LET'S<br />WORK
+            {'LET\'S'.split('').map((char, index) => (
+              <motion.span
+                key={index}
+                className="inline-block"
+                whileHover={{
+                  y: -20,
+                  color: "#00FF00",
+                  scale: 1.2,
+                }}
+                transition={{ duration: 0.2 }}
+              >
+                {char === ' ' ? '\u00A0' : char}
+              </motion.span>
+            ))}
+            <br />
+            {'WORK'.split('').map((char, index) => (
+              <motion.span
+                key={index}
+                className="inline-block"
+                whileHover={{
+                  y: -20,
+                  color: "#00FF00",
+                  scale: 1.2,
+                }}
+                transition={{ duration: 0.2 }}
+              >
+                {char}
+              </motion.span>
+            ))}
           </motion.h2>
           
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
             className="space-y-6"
           >
-            <a
+            <motion.a
               href={`mailto:${mockAbout.email}`}
-              className="block text-3xl md:text-5xl lg:text-6xl font-black hover:text-[#00FF00] transition-colors underline"
+              className="block text-3xl md:text-5xl lg:text-6xl font-black hover:text-[#00FF00] transition-colors underline relative"
+              whileHover={{
+                scale: 1.05,
+                x: 20,
+              }}
+              animate={{
+                opacity: [1, 0.8, 1],
+              }}
+              transition={{
+                opacity: {
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                },
+              }}
             >
               hello@alexrivera.design
-            </a>
+              <motion.span
+                className="absolute -right-12 top-1/2 -translate-y-1/2"
+                initial={{ opacity: 0, x: -10 }}
+                whileHover={{ opacity: 1, x: 0 }}
+              >
+                <ArrowRight className="w-8 h-8" />
+              </motion.span>
+            </motion.a>
             
-            <div className="flex gap-6 pt-8">
-              <a
+            <motion.div
+              className="flex gap-6 pt-8"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+            >
+              <motion.a
                 href="#"
                 className="border-2 border-white px-6 py-3 text-sm font-mono tracking-[0.15em] hover:bg-[#00FF00] hover:text-black hover:border-[#00FF00] transition-colors"
+                whileHover={{
+                  scale: 1.1,
+                  rotate: [0, -2, 2, 0],
+                }}
+                whileTap={{ scale: 0.95 }}
               >
                 INSTAGRAM
-              </a>
-              <a
+              </motion.a>
+              <motion.a
                 href="#"
                 className="border-2 border-white px-6 py-3 text-sm font-mono tracking-[0.15em] hover:bg-[#00FF00] hover:text-black hover:border-[#00FF00] transition-colors"
+                whileHover={{
+                  scale: 1.1,
+                  rotate: [0, 2, -2, 0],
+                }}
+                whileTap={{ scale: 0.95 }}
               >
                 BEHANCE
-              </a>
-            </div>
+              </motion.a>
+            </motion.div>
           </motion.div>
         </div>
       </section>
