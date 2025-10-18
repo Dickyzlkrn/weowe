@@ -14,34 +14,73 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-black text-white z-50 border-b-2 border-white">
+    <motion.header
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ type: "spring", stiffness: 100, damping: 20 }}
+      className="fixed top-0 left-0 w-full bg-black text-white z-50 border-b-2 border-white"
+    >
       <div className="px-6 md:px-12 lg:px-20 py-6 flex items-center justify-between">
-        <Link to="/" className="text-2xl md:text-3xl font-black tracking-tighter hover:text-[#00FF00] transition-colors">
-          AR
+        <Link to="/">
+          <motion.div
+            className="text-2xl md:text-3xl font-black tracking-tighter hover:text-[#00FF00] transition-colors cursor-pointer"
+            whileHover={{
+              scale: 1.1,
+              rotate: [0, -5, 5, 0],
+            }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ duration: 0.3 }}
+          >
+            AR
+          </motion.div>
         </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
+          {navLinks.map((link, index) => (
             <Link
               key={link.path}
               to={link.path}
-              className={`text-sm font-mono tracking-[0.15em] hover:text-[#00FF00] transition-colors ${
-                location.pathname === link.path ? 'text-[#00FF00]' : ''
-              }`}
             >
-              {link.name}
+              <motion.div
+                className={`text-sm font-mono tracking-[0.15em] hover:text-[#00FF00] transition-colors relative ${
+                  location.pathname === link.path ? 'text-[#00FF00]' : ''
+                }`}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 + 0.2 }}
+                whileHover={{
+                  scale: 1.1,
+                  y: -3,
+                }}
+              >
+                {link.name}
+                {location.pathname === link.path && (
+                  <motion.div
+                    className="absolute -bottom-2 left-0 w-full h-0.5 bg-[#00FF00]"
+                    layoutId="activeNav"
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  />
+                )}
+              </motion.div>
             </Link>
           ))}
         </nav>
 
         {/* Mobile Menu Button */}
-        <button
+        <motion.button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="md:hidden text-white hover:text-[#00FF00] transition-colors"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
         >
-          {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
+          <motion.div
+            animate={{ rotate: mobileMenuOpen ? 90 : 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </motion.div>
+        </motion.button>
       </div>
 
       {/* Mobile Menu */}
@@ -51,27 +90,38 @@ const Header = () => {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
             className="md:hidden bg-black border-t-2 border-white overflow-hidden"
           >
             <nav className="flex flex-col px-6 py-6 space-y-4">
-              {navLinks.map((link) => (
+              {navLinks.map((link, index) => (
                 <Link
                   key={link.path}
                   to={link.path}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`text-2xl font-black tracking-tighter hover:text-[#00FF00] transition-colors ${
-                    location.pathname === link.path ? 'text-[#00FF00]' : ''
-                  }`}
                 >
-                  {link.name}
+                  <motion.div
+                    initial={{ x: -50, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    exit={{ x: -50, opacity: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className={`text-2xl font-black tracking-tighter hover:text-[#00FF00] transition-colors ${
+                      location.pathname === link.path ? 'text-[#00FF00]' : ''
+                    }`}
+                    whileHover={{
+                      x: 10,
+                      scale: 1.05,
+                    }}
+                  >
+                    {link.name}
+                  </motion.div>
                 </Link>
               ))}
             </nav>
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </motion.header>
   );
 };
 
