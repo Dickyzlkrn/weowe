@@ -2,138 +2,158 @@
 export const mockProjects = [
   {
     id: 1,
-    title: "URBAN DECAY",
-    category: "Brand Identity",
+    title: "KULINER LAMPUNG FESTIVAL",
+    category: "Event Branding",
     year: "2024",
-    description: "Streetwear brand identity for underground fashion collective",
-    tags: ["BRANDING", "IDENTITY", "STREETWEAR"]
+    description: "Visual branding dan promosi untuk festival kuliner terbesar di Lampung",
+    tags: ["BRANDING", "EVENT", "VISUAL DESIGN"]
   },
   {
     id: 2,
-    title: "CONCRETE JUNGLE",
-    category: "Editorial Design",
+    title: "WKDSGN STUDIO",
+    category: "Creative Studio",
     year: "2024",
-    description: "Magazine layout exploring urban architecture and street culture",
-    tags: ["EDITORIAL", "PRINT", "LAYOUT"]
+    description: "Layout kreatif dan komunikasi visual untuk proyek studio desain",
+    tags: ["LAYOUT", "STUDIO", "CREATIVE"]
   },
   {
     id: 3,
-    title: "REVOLT APPAREL",
-    category: "Graphic Design",
+    title: "RRI BANDAR LAMPUNG",
+    category: "Corporate Design",
     year: "2023",
-    description: "T-shirt graphics and merchandise for activist streetwear brand",
-    tags: ["GRAPHICS", "APPAREL", "PRINT"]
+    description: "Brand strengthening dan strategi komunikasi visual untuk lembaga penyiaran",
+    tags: ["BRANDING", "CORPORATE", "STRATEGY"]
   },
   {
     id: 4,
-    title: "NOISE FESTIVAL",
-    category: "Poster Design",
-    year: "2024",
-    description: "Event branding for underground electronic music festival",
-    tags: ["POSTER", "EVENT", "BRANDING"]
+    title: "ROYALINDO DIGITAL",
+    category: "Digital Marketing",
+    year: "2023",
+    description: "Kampanye digital dan konten kreatif untuk meningkatkan brand awareness",
+    tags: ["DIGITAL", "MARKETING", "CONTENT"]
   },
   {
     id: 5,
-    title: "RAW CUTS",
-    category: "Typography",
+    title: "POSTER SERIES",
+    category: "Graphic Design",
     year: "2023",
-    description: "Experimental typeface design for street culture publications",
-    tags: ["TYPE", "EXPERIMENTAL", "CUSTOM"]
+    description: "Koleksi poster desain untuk berbagai klien dan campaign",
+    tags: ["POSTER", "GRAPHICS", "VISUAL"]
   },
   {
     id: 6,
-    title: "STREET ATLAS",
-    category: "Web Design",
+    title: "SOCIAL MEDIA KIT",
+    category: "Content Design",
     year: "2024",
-    description: "Digital platform showcasing global street art and graffiti",
-    tags: ["WEB", "UI/UX", "DIGITAL"]
+    description: "Template dan konten visual untuk kampanye media sosial",
+    tags: ["SOCIAL", "CONTENT", "TEMPLATE"]
   }
 ];
 
 export const mockGallery = [
   {
     id: 1,
-    title: "URBAN DECAY BRAND KIT",
-    category: "BRANDING",
+    title: "KLF VISUAL IDENTITY",
+    category: "EVENT BRANDING",
     image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop",
     color: "#00FF00"
   },
   {
     id: 2,
-    title: "CONCRETE MAGAZINE SPREAD",
-    category: "EDITORIAL",
+    title: "WKDSGN STUDIO LAYOUTS",
+    category: "CREATIVE DESIGN",
     image: "https://images.unsplash.com/photo-1618172193763-c511deb635ca?w=800&h=600&fit=crop",
     color: "#FFFFFF"
   },
   {
     id: 3,
-    title: "REVOLT TEE DESIGNS",
-    category: "APPAREL",
+    title: "RRI BRAND MATERIALS",
+    category: "CORPORATE",
     image: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=800&h=600&fit=crop",
     color: "#00FF00"
   },
   {
     id: 4,
-    title: "NOISE FESTIVAL POSTER",
-    category: "POSTER",
+    title: "DIGITAL CAMPAIGN POSTERS",
+    category: "MARKETING",
     image: "https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?w=800&h=600&fit=crop",
     color: "#FFFFFF"
   },
   {
     id: 5,
-    title: "RAW CUTS TYPEFACE",
-    category: "TYPOGRAPHY",
+    title: "SOCIAL MEDIA DESIGNS",
+    category: "CONTENT CREATION",
     image: "https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=800&h=600&fit=crop",
     color: "#00FF00"
   },
   {
     id: 6,
-    title: "STREET ATLAS UI",
-    category: "WEB DESIGN",
+    title: "BRANDING PROJECTS",
+    category: "VISUAL IDENTITY",
     image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&h=600&fit=crop",
     color: "#FFFFFF"
   },
   {
     id: 7,
-    title: "GRAFFITI SERIES",
-    category: "ART DIRECTION",
+    title: "PROMOTIONAL MATERIALS",
+    category: "GRAPHIC DESIGN",
     image: "https://images.unsplash.com/photo-1569437061241-a848be43cc82?w=800&h=600&fit=crop",
     color: "#00FF00"
   },
   {
     id: 8,
-    title: "UNDERGROUND ZINE",
-    category: "EDITORIAL",
+    title: "EVENT COLLATERAL",
+    category: "PRINT DESIGN",
     image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=800&h=600&fit=crop",
     color: "#FFFFFF"
   },
   {
     id: 9,
-    title: "BRUTALIST PACKAGING",
-    category: "PACKAGING",
+    title: "CREATIVE CAMPAIGNS",
+    category: "ADVERTISING",
     image: "https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=800&h=600&fit=crop",
     color: "#00FF00"
   }
 ];
 
 export const mockAbout = {
-  name: "ALEX RIVERA",
-  title: "GRAPHIC DESIGNER",
-  bio: "CRAFTING BOLD VISUAL IDENTITIES FOR STREET CULTURE. SPECIALIZING IN BRUTALIST DESIGN, TYPOGRAPHY, AND BRAND IDENTITY FOR UNDERGROUND MOVEMENTS.",
-  experience: "7+ YEARS",
-  location: "LOS ANGELES, CA",
+  name: "DICKY ZULKARNAEN",
+  title: "CREATIVE DESIGNER & MARKETING ENTHUSIAST",
+  bio: "CREATIVE DESIGNER DAN MARKETING ENTHUSIAST DENGAN PENGALAMAN PROFESIONAL DI BIDANG DESAIN GRAFIS, DIGITAL MARKETING, DAN BUSINESS DEVELOPMENT. FOKUS PADA KOLABORASI, INOVASI, DAN KOMUNIKASI VISUAL YANG KUAT UNTUK MENCIPTAKAN KARYA DESAIN YANG TIDAK HANYA MENARIK, TETAPI JUGA BERDAMPAK.",
+  experience: "3+ YEARS",
+  location: "BANDAR LAMPUNG, ID",
   skills: [
-    "BRAND IDENTITY",
-    "TYPOGRAPHY",
-    "EDITORIAL DESIGN",
-    "PRINT DESIGN",
-    "ART DIRECTION",
-    "WEB DESIGN"
+    "GRAPHIC DESIGN",
+    "BRANDING & VISUAL IDENTITY",
+    "DIGITAL MARKETING STRATEGY",
+    "CONTENT CREATION",
+    "ADOBE PHOTOSHOP",
+    "CORELDRAW"
+  ],
+  experiences: [
+    {
+      role: "FREELANCE GRAPHIC DESIGNER",
+      company: "KULINER LAMPUNG FESTIVAL & WKDSGN STUDIO",
+      period: "2024",
+      description: "Visual branding, layout kreatif, dan komunikasi visual yang efektif"
+    },
+    {
+      role: "MARKETING INTERN",
+      company: "LPP RRI BANDAR LAMPUNG",
+      period: "2023",
+      description: "Promosi, pengembangan kemitraan, dan strategi komunikasi brand"
+    },
+    {
+      role: "DIGITAL MARKETING INTERN",
+      company: "PT ROYALINDO CIPTA GRIYA",
+      period: "2023",
+      description: "Analisis audiens, konten digital, dan kampanye promosi online"
+    }
   ]
 };
 
 export const mockContact = {
-  email: "hello@alexrivera.design",
-  instagram: "@alexrivera.design",
-  behance: "alexrivera"
+  email: "dicky.zulkarnaen@design.com",
+  instagram: "@dickyzulkarnaen",
+  behance: "dickyzulkarnaen"
 };
