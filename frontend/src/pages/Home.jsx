@@ -650,42 +650,42 @@ const Home = () => {
         />
 
         <div className="max-w-[1920px] mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-            <div>
-              <motion.h2
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, type: "spring" }}
-                className="text-6xl md:text-8xl font-black mb-8 tracking-tighter relative"
-                style={{ fontFamily: 'Space Grotesk, sans-serif' }}
-              >
-                {'ABOUT'.split('').map((char, index) => (
-                  <motion.span
-                    key={index}
-                    className="inline-block"
-                    whileHover={{
-                      scale: 1.2,
-                      color: "#00FF00",
-                      rotate: [0, -5, 5, 0],
-                    }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {char}
-                  </motion.span>
-                ))}
-              </motion.h2>
-              <motion.p
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-                className="text-xl md:text-2xl font-bold tracking-tight leading-relaxed"
-              >
-                {mockAbout.bio}
-              </motion.p>
-            </div>
-            
+          <div className="mb-16">
+            <motion.h2
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, type: "spring" }}
+              className="text-6xl md:text-8xl font-black mb-8 tracking-tighter relative"
+              style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+            >
+              {'ABOUT'.split('').map((char, index) => (
+                <motion.span
+                  key={index}
+                  className="inline-block"
+                  whileHover={{
+                    scale: 1.2,
+                    color: "#00FF00",
+                    rotate: [0, -5, 5, 0],
+                  }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="text-xl md:text-2xl font-bold tracking-tight leading-relaxed max-w-4xl"
+            >
+              {mockAbout.bio}
+            </motion.p>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-16">
             <div className="space-y-8">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -720,36 +720,74 @@ const Home = () => {
                 <p className="text-sm font-mono tracking-[0.2em] text-gray-600 mb-2">LOCATION</p>
                 <p className="text-3xl md:text-4xl font-black">{mockAbout.location}</p>
               </motion.div>
-              
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.6 }}
-              >
-                <p className="text-sm font-mono tracking-[0.2em] text-gray-600 mb-4">EXPERTISE</p>
-                <div className="grid grid-cols-2 gap-3">
-                  {mockAbout.skills.map((skill, i) => (
-                    <motion.div
-                      key={i}
-                      className="border-2 border-black px-4 py-3 text-sm font-mono tracking-[0.1em] hover:bg-[#00FF00] transition-colors duration-200 cursor-pointer"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.7 + i * 0.1 }}
-                      whileHover={{
-                        scale: 1.05,
-                        rotate: [0, -2, 2, 0],
-                        borderColor: "#00FF00",
-                      }}
-                    >
-                      {skill}
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
             </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6 }}
+            >
+              <p className="text-sm font-mono tracking-[0.2em] text-gray-600 mb-4">EXPERTISE</p>
+              <div className="grid grid-cols-2 gap-3">
+                {mockAbout.skills.map((skill, i) => (
+                  <motion.div
+                    key={i}
+                    className="border-2 border-black px-4 py-3 text-sm font-mono tracking-[0.1em] hover:bg-[#00FF00] transition-colors duration-200 cursor-pointer"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.7 + i * 0.1 }}
+                    whileHover={{
+                      scale: 1.05,
+                      rotate: [0, -2, 2, 0],
+                      borderColor: "#00FF00",
+                    }}
+                  >
+                    {skill}
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
           </div>
+
+          {/* Professional Experience */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.8 }}
+          >
+            <h3 className="text-3xl md:text-4xl font-black mb-8 tracking-tighter">
+              PROFESSIONAL EXPERIENCE
+            </h3>
+            <div className="space-y-6">
+              {mockAbout.experiences.map((exp, index) => (
+                <motion.div
+                  key={index}
+                  className="border-l-4 border-[#00FF00] pl-6 py-4 hover:bg-gray-50 transition-colors"
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.9 + index * 0.1 }}
+                  whileHover={{ x: 10, scale: 1.02 }}
+                >
+                  <p className="text-xs font-mono tracking-[0.2em] text-gray-600 mb-1">
+                    {exp.period}
+                  </p>
+                  <h4 className="text-xl md:text-2xl font-black tracking-tight mb-2">
+                    {exp.role}
+                  </h4>
+                  <p className="text-lg font-bold text-gray-700 mb-2">
+                    {exp.company}
+                  </p>
+                  <p className="text-base leading-relaxed text-gray-600">
+                    {exp.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
