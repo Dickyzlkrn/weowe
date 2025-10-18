@@ -29,11 +29,11 @@ const Footer = () => {
                   color: "#00FF00",
                 }}
               >
-                ALEX RIVERA
+                DICKY ZULKARNAEN
               </motion.h3>
               <p className="text-sm font-mono tracking-[0.1em] opacity-70">
-                GRAPHIC DESIGNER<br />
-                ART DIRECTOR
+                CREATIVE DESIGNER<br />
+                MARKETING ENTHUSIAST
               </p>
             </motion.div>
 
