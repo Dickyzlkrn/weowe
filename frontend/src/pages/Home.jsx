@@ -5,8 +5,87 @@ import { mockProjects, mockAbout } from '../mock';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const { scrollYProgress } = useScroll();
+  const scaleProgress = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
+  const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 };
+  const scaleSpring = useSpring(scaleProgress, springConfig);
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  // Text split animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const letterVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 50,
+      rotateX: -90,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      rotateX: 0,
+      transition: {
+        type: "spring",
+        damping: 12,
+        stiffness: 100,
+      },
+    },
+  };
+
+  const projectVariants = {
+    hidden: { 
+      opacity: 0, 
+      x: -100,
+      scale: 0.8,
+    },
+    visible: (i) => ({
+      opacity: 1,
+      x: 0,
+      scale: 1,
+      transition: {
+        delay: i * 0.15,
+        type: "spring",
+        stiffness: 80,
+        damping: 15,
+      },
+    }),
+  };
+
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-black text-white overflow-hidden">
+      {/* Custom cursor follower */}
+      <motion.div
+        className="fixed w-4 h-4 bg-[#00FF00] rounded-full pointer-events-none z-50 mix-blend-difference"
+        style={{
+          left: mousePosition.x - 8,
+          top: mousePosition.y - 8,
+        }}
+        animate={{
+          scale: [1, 1.2, 1],
+        }}
+        transition={{
+          duration: 0.3,
+          repeat: Infinity,
+          repeatType: "reverse",
+        }}
+      />
       {/* Hero Section */}
       <motion.section
         initial={{ opacity: 0 }}
