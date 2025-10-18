@@ -376,6 +376,261 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Gallery Section */}
+      <section className="px-6 md:px-12 lg:px-20 py-20 md:py-32 bg-black relative overflow-hidden">
+        {/* Animated scanline effect */}
+        <motion.div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 0, 0.03) 2px, rgba(0, 255, 0, 0.03) 4px)',
+          }}
+          animate={{
+            y: [0, 20, 0],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
+
+        <div className="max-w-[1920px] mx-auto relative z-10">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            className="mb-16"
+          >
+            <motion.h2
+              initial={{ x: -100, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, type: "spring" }}
+              className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter relative mb-4"
+              style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+            >
+              {'DESIGN'.split('').map((char, index) => (
+                <motion.span
+                  key={index}
+                  className="inline-block"
+                  whileHover={{
+                    y: -20,
+                    color: "#00FF00",
+                    rotate: [0, -10, 10, 0],
+                  }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {char}
+                </motion.span>
+              ))}
+              <br />
+              {'GALLERY'.split('').map((char, index) => (
+                <motion.span
+                  key={index}
+                  className="inline-block"
+                  whileHover={{
+                    y: -20,
+                    color: "#00FF00",
+                    rotate: [0, 10, -10, 0],
+                  }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </motion.h2>
+            
+            <motion.div
+              className="h-1 bg-[#00FF00]"
+              initial={{ width: 0 }}
+              whileInView={{ width: "40%" }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.3 }}
+            />
+          </motion.div>
+
+          {/* Gallery Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {mockGallery.map((item, index) => (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, scale: 0.8, rotateY: -20 }}
+                whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{
+                  delay: index * 0.1,
+                  duration: 0.6,
+                  type: "spring",
+                  stiffness: 100,
+                }}
+                className="relative group cursor-pointer aspect-[4/3] overflow-hidden border-2 border-white"
+                onClick={() => setSelectedImage(item)}
+              >
+                {/* Image */}
+                <motion.img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.4 }}
+                />
+
+                {/* Overlay */}
+                <motion.div
+                  className="absolute inset-0 bg-black/80 flex flex-col justify-between p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                >
+                  <div>
+                    <motion.span
+                      className="text-xs font-mono tracking-[0.2em] mb-2 block"
+                      style={{ color: item.color }}
+                      animate={{
+                        opacity: [0.7, 1, 0.7],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                      }}
+                    >
+                      {item.category}
+                    </motion.span>
+                    <motion.h3
+                      className="text-xl md:text-2xl font-black tracking-tighter text-white"
+                      initial={{ y: 20, opacity: 0 }}
+                      whileHover={{ y: 0, opacity: 1 }}
+                      transition={{ delay: 0.1 }}
+                    >
+                      {item.title}
+                    </motion.h3>
+                  </div>
+
+                  <motion.div
+                    className="flex items-center gap-2 text-[#00FF00]"
+                    initial={{ y: 20, opacity: 0 }}
+                    whileHover={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    <ZoomIn className="w-5 h-5" />
+                    <span className="text-sm font-mono tracking-[0.15em]">VIEW</span>
+                  </motion.div>
+                </motion.div>
+
+                {/* Border animation on hover */}
+                <motion.div
+                  className="absolute inset-0 border-4 border-[#00FF00] pointer-events-none"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileHover={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.div>
+            ))}
+          </div>
+
+          {/* View All Button */}
+          <motion.div
+            className="mt-16 flex justify-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 }}
+          >
+            <motion.button
+              className="border-2 border-[#00FF00] bg-transparent text-[#00FF00] px-12 py-5 text-sm font-mono tracking-[0.15em] hover:bg-[#00FF00] hover:text-black transition-colors duration-300 flex items-center gap-3"
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 0 30px rgba(0, 255, 0, 0.5)",
+              }}
+              whileTap={{ scale: 0.95 }}
+              animate={{
+                y: [0, -5, 0],
+              }}
+              transition={{
+                y: {
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                },
+              }}
+            >
+              VIEW ALL WORK
+              <ArrowRight className="w-5 h-5" />
+            </motion.button>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/95 z-[100] flex items-center justify-center p-6"
+            onClick={() => setSelectedImage(null)}
+          >
+            <motion.button
+              className="absolute top-8 right-8 text-white hover:text-[#00FF00] transition-colors z-10"
+              whileHover={{ scale: 1.1, rotate: 90 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => setSelectedImage(null)}
+            >
+              <X size={40} />
+            </motion.button>
+
+            <motion.div
+              initial={{ scale: 0.8, rotateY: -20 }}
+              animate={{ scale: 1, rotateY: 0 }}
+              exit={{ scale: 0.8, rotateY: 20 }}
+              transition={{ type: "spring", stiffness: 100 }}
+              className="max-w-6xl w-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <motion.div
+                className="border-4 border-[#00FF00] overflow-hidden"
+                animate={{
+                  borderColor: ["#00FF00", "#FFFFFF", "#00FF00"],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                }}
+              >
+                <img
+                  src={selectedImage.image}
+                  alt={selectedImage.title}
+                  className="w-full h-auto"
+                />
+              </motion.div>
+
+              <motion.div
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="mt-6 text-center"
+              >
+                <motion.p
+                  className="text-sm font-mono tracking-[0.2em] text-[#00FF00] mb-2"
+                  animate={{
+                    opacity: [0.7, 1, 0.7],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                  }}
+                >
+                  {selectedImage.category}
+                </motion.p>
+                <h3 className="text-3xl md:text-4xl font-black tracking-tighter text-white">
+                  {selectedImage.title}
+                </h3>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* About Section */}
       <section className="px-6 md:px-12 lg:px-20 py-20 md:py-32 bg-white text-black relative overflow-hidden">
         {/* Animated corner accents */}
