@@ -33,8 +33,8 @@ const Home = () => {
   };
 
   const letterVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       y: 50,
       rotateX: -90,
     },
@@ -51,8 +51,8 @@ const Home = () => {
   };
 
   const projectVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       x: -100,
       scale: 0.8,
     },
@@ -73,7 +73,7 @@ const Home = () => {
     <div className="min-h-screen bg-black text-white overflow-hidden">
       {/* Custom cursor follower */}
       <motion.div
-        className="fixed w-4 h-4 bg-[#00FF00] rounded-full pointer-events-none z-50 mix-blend-difference"
+        className="fixed w-4 h-4 bg-[#00eaff] rounded-full pointer-events-none z-50 mix-blend-difference"
         style={{
           left: mousePosition.x - 8,
           top: mousePosition.y - 8,
@@ -92,31 +92,29 @@ const Home = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2 }}
-        className="min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20 py-20 border-b-4 border-[#00FF00] relative"
+        className="min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20 py-20 border-b-4 border-[#ffffff00] relative"
       >
         {/* Animated background grid */}
         <motion.div
-          className="absolute inset-0 opacity-5"
+          className="absolute inset-0 opacity-40"
           style={{
-            backgroundImage: 'linear-gradient(#00FF00 1px, transparent 1px), linear-gradient(90deg, #00FF00 1px, transparent 1px)',
-            backgroundSize: '50px 50px',
+            backgroundImage: `url(${process.env.PUBLIC_URL + '/csh.jpeg'})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
           }}
-          animate={{
-            backgroundPosition: ['0px 0px', '50px 50px'],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear",
-          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.4 }}
+          transition={{ duration: 1.5 }}
         />
+
 
         <div className="max-w-[1920px] mx-auto w-full relative z-10">
           <motion.div
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            transition={{ 
-              delay: 0.3, 
+            transition={{
+              delay: 0.3,
               duration: 0.8,
               type: "spring",
               stiffness: 60,
@@ -124,7 +122,7 @@ const Home = () => {
             className="mb-8"
           >
             <motion.p
-              className="text-[#00FF00] font-mono text-sm md:text-base tracking-[0.2em] mb-4"
+              className="text-[#ffffff] font-mono text-sm md:text-base tracking-[0.2em] mb-4"
               animate={{
                 opacity: [0.7, 1, 0.7],
               }}
@@ -137,7 +135,7 @@ const Home = () => {
               GRAPHIC DESIGNER / ART DIRECTOR
             </motion.p>
           </motion.div>
-          
+
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -162,12 +160,12 @@ const Home = () => {
               ))}
             </h1>
           </motion.div>
-          
+
           <motion.div
             initial={{ x: 100, opacity: 0, scale: 0.9 }}
             animate={{ x: 0, opacity: 1, scale: 1 }}
-            transition={{ 
-              delay: 0.9, 
+            transition={{
+              delay: 0.9,
               duration: 0.8,
               type: "spring",
               stiffness: 50,
@@ -184,8 +182,8 @@ const Home = () => {
             </motion.p>
             <Link to="/projects">
               <motion.button
-                className="bg-[#00FF00] text-black px-8 py-4 text-sm font-mono tracking-[0.15em] hover:bg-white transition-colors duration-200 border-2 border-[#00FF00] hover:border-white flex items-center gap-3 group"
-                whileHover={{ 
+                className="bg-[#323cff] text-white px-8 py-4 text-sm font-mono tracking-[0.15em] hover:bg-black transition-colors duration-200 border-2 border-[#2200ff] hover:border-white flex items-center gap-3 group"
+                whileHover={{
                   scale: 1.05,
                   boxShadow: "0 0 30px rgba(0, 255, 0, 0.5)",
                 }}
@@ -227,7 +225,7 @@ const Home = () => {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ 
+            transition={{
               duration: 0.8,
               type: "spring",
               stiffness: 60,
@@ -263,17 +261,17 @@ const Home = () => {
             >
               WORK
             </motion.span>
-            
+
             {/* Animated underline */}
             <motion.div
-              className="absolute bottom-0 left-0 h-2 bg-[#00FF00]"
+              className="absolute bottom-0 left-0 h-2 bg-[#000dff]"
               initial={{ width: 0 }}
               whileInView={{ width: "30%" }}
               viewport={{ once: true }}
               transition={{ duration: 1, delay: 0.5 }}
             />
           </motion.h2>
-          
+
           <div className="space-y-0">
             {mockProjects.map((project, index) => (
               <motion.div
@@ -292,7 +290,7 @@ const Home = () => {
               >
                 {/* Animated background on hover */}
                 <motion.div
-                  className="absolute inset-0 bg-[#00FF00]"
+                  className="absolute inset-0 bg-[#0800ff]"
                   initial={{ x: "-100%" }}
                   whileHover={{ x: 0 }}
                   transition={{ duration: 0.4 }}
@@ -318,7 +316,7 @@ const Home = () => {
                       {project.description}
                     </motion.p>
                   </div>
-                  
+
                   <div className="flex flex-col items-start md:items-end gap-4">
                     <motion.span
                       className="text-sm font-mono tracking-[0.2em] opacity-50 group-hover:opacity-100"
@@ -337,7 +335,7 @@ const Home = () => {
                       {project.tags.map((tag, i) => (
                         <motion.span
                           key={i}
-                          className="border-2 border-current px-3 py-1 text-xs font-mono tracking-[0.15em] group-hover:border-black group-hover:bg-black group-hover:text-[#00FF00] transition-colors"
+                          className="border-2 border-current px-3 py-1 text-xs font-mono tracking-[0.15em] group-hover:border-black group-hover:bg-black group-hover:text-[#ffffff] transition-colors"
                           whileHover={{
                             scale: 1.1,
                             rotate: [-1, 1, -1],
@@ -364,7 +362,7 @@ const Home = () => {
               </motion.div>
             ))}
           </div>
-          
+
           <motion.div
             className="border-t-2 border-white"
             initial={{ scaleX: 0 }}
@@ -439,9 +437,9 @@ const Home = () => {
                 </motion.span>
               ))}
             </motion.h2>
-            
+
             <motion.div
-              className="h-1 bg-[#00FF00]"
+              className="h-1 bg-[#1100ff]"
               initial={{ width: 0 }}
               whileInView={{ width: "40%" }}
               viewport={{ once: true }}
@@ -463,7 +461,7 @@ const Home = () => {
                   type: "spring",
                   stiffness: 100,
                 }}
-                className="relative group cursor-pointer aspect-[4/3] overflow-hidden border-2 border-white"
+                className="relative group cursor-pointer aspect-[4/3] overflow-hidden border-0 border-white"
                 onClick={() => setSelectedImage(item)}
               >
                 {/* Image */}
@@ -506,7 +504,7 @@ const Home = () => {
                   </div>
 
                   <motion.div
-                    className="flex items-center gap-2 text-[#00FF00]"
+                    className="flex items-center gap-2 text-[#00f2ff]"
                     initial={{ y: 20, opacity: 0 }}
                     whileHover={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.2 }}
@@ -518,7 +516,7 @@ const Home = () => {
 
                 {/* Border animation on hover */}
                 <motion.div
-                  className="absolute inset-0 border-4 border-[#00FF00] pointer-events-none"
+                  className="absolute inset-0 border-4 border-[#3300ff] pointer-events-none"
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileHover={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.3 }}
@@ -536,7 +534,7 @@ const Home = () => {
             transition={{ delay: 0.5 }}
           >
             <motion.button
-              className="border-2 border-[#00FF00] bg-transparent text-[#00FF00] px-12 py-5 text-sm font-mono tracking-[0.15em] hover:bg-[#00FF00] hover:text-black transition-colors duration-300 flex items-center gap-3"
+              className="border-2 border-[#1900ff] bg-transparent text-[#ff00cc] px-12 py-5 text-sm font-mono tracking-[0.15em] hover:bg-[#8000ff] hover:text-black transition-colors duration-300 flex items-center gap-3"
               whileHover={{
                 scale: 1.05,
                 boxShadow: "0 0 30px rgba(0, 255, 0, 0.5)",
@@ -571,7 +569,7 @@ const Home = () => {
             onClick={() => setSelectedImage(null)}
           >
             <motion.button
-              className="absolute top-8 right-8 text-white hover:text-[#00FF00] transition-colors z-10"
+              className="absolute top-8 right-8 text-white hover:text-[#ff00c8] transition-colors z-10"
               whileHover={{ scale: 1.1, rotate: 90 }}
               whileTap={{ scale: 0.9 }}
               onClick={() => setSelectedImage(null)}
@@ -588,7 +586,7 @@ const Home = () => {
               onClick={(e) => e.stopPropagation()}
             >
               <motion.div
-                className="border-4 border-[#00FF00] overflow-hidden"
+                className="border-4 border-[#0022ff] overflow-hidden"
                 animate={{
                   borderColor: ["#00FF00", "#FFFFFF", "#00FF00"],
                 }}
@@ -611,7 +609,7 @@ const Home = () => {
                 className="mt-6 text-center"
               >
                 <motion.p
-                  className="text-sm font-mono tracking-[0.2em] text-[#00FF00] mb-2"
+                  className="text-sm font-mono tracking-[0.2em] text-[#ff00ee] mb-2"
                   animate={{
                     opacity: [0.7, 1, 0.7],
                   }}
@@ -635,14 +633,14 @@ const Home = () => {
       <section className="px-6 md:px-12 lg:px-20 py-20 md:py-32 bg-white text-black relative overflow-hidden">
         {/* Animated corner accents */}
         <motion.div
-          className="absolute top-0 left-0 w-32 h-32 border-l-4 border-t-4 border-[#00FF00]"
+          className="absolute top-0 left-0 w-32 h-32 border-l-4 border-t-4 border-[#3c00ff]"
           initial={{ scale: 0, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         />
         <motion.div
-          className="absolute bottom-0 right-0 w-32 h-32 border-r-4 border-b-4 border-[#00FF00]"
+          className="absolute bottom-0 right-0 w-32 h-32 border-r-4 border-b-4 border-[#ff00d0]"
           initial={{ scale: 0, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           viewport={{ once: true }}
@@ -684,7 +682,7 @@ const Home = () => {
               {mockAbout.bio}
             </motion.p>
           </div>
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-16">
             <div className="space-y-8">
               <motion.div
@@ -709,7 +707,7 @@ const Home = () => {
                   {mockAbout.experience}
                 </motion.p>
               </motion.div>
-              
+
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -733,7 +731,7 @@ const Home = () => {
                 {mockAbout.skills.map((skill, i) => (
                   <motion.div
                     key={i}
-                    className="border-2 border-black px-4 py-3 text-sm font-mono tracking-[0.1em] hover:bg-[#00FF00] transition-colors duration-200 cursor-pointer"
+                    className="border-2 border-black px-4 py-3 text-sm font-mono tracking-[0.1em] hover:bg-[#ff00d0] transition-colors duration-200 cursor-pointer"
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
@@ -765,7 +763,7 @@ const Home = () => {
               {mockAbout.experiences.map((exp, index) => (
                 <motion.div
                   key={index}
-                  className="border-l-4 border-[#00FF00] pl-6 py-4 hover:bg-gray-50 transition-colors"
+                  className="border-l-4 border-[#0015ff] pl-6 py-4 hover:bg-gray-50 transition-colors"
                   initial={{ opacity: 0, x: -30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -792,7 +790,7 @@ const Home = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="px-6 md:px-12 lg:px-20 py-20 md:py-32 border-t-4 border-[#00FF00] relative overflow-hidden">
+      <section className="px-6 md:px-12 lg:px-20 py-20 md:py-32 border-t-4 border-[#0800ff] relative overflow-hidden">
         {/* Animated glitch effect background */}
         <motion.div
           className="absolute inset-0 opacity-5"
@@ -848,7 +846,7 @@ const Home = () => {
               </motion.span>
             ))}
           </motion.h2>
-          
+
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -858,7 +856,7 @@ const Home = () => {
           >
             <motion.a
               href={`mailto:${mockAbout.email}`}
-              className="block text-3xl md:text-5xl lg:text-6xl font-black hover:text-[#00FF00] transition-colors underline relative"
+              className="block text-3xl md:text-5xl lg:text-6xl font-black hover:text-[#ff00e6] transition-colors underline relative"
               whileHover={{
                 scale: 1.05,
                 x: 20,
@@ -883,7 +881,7 @@ const Home = () => {
                 <ArrowRight className="w-8 h-8" />
               </motion.span>
             </motion.a>
-            
+
             <motion.div
               className="flex gap-6 pt-8"
               initial={{ opacity: 0 }}
@@ -893,7 +891,7 @@ const Home = () => {
             >
               <motion.a
                 href="#"
-                className="border-2 border-white px-6 py-3 text-sm font-mono tracking-[0.15em] hover:bg-[#00FF00] hover:text-black hover:border-[#00FF00] transition-colors"
+                className="border-2 border-white px-6 py-3 text-sm font-mono tracking-[0.15em] hover:bg-[#d900ff] hover:text-black hover:border-[#ff00bf] transition-colors"
                 whileHover={{
                   scale: 1.1,
                   rotate: [0, -2, 2, 0],
@@ -904,7 +902,7 @@ const Home = () => {
               </motion.a>
               <motion.a
                 href="#"
-                className="border-2 border-white px-6 py-3 text-sm font-mono tracking-[0.15em] hover:bg-[#00FF00] hover:text-black hover:border-[#00FF00] transition-colors"
+                className="border-2 border-white px-6 py-3 text-sm font-mono tracking-[0.15em] hover:bg-[#ff00ea] hover:text-black hover:border-[#ff009d] transition-colors"
                 whileHover={{
                   scale: 1.1,
                   rotate: [0, 2, -2, 0],

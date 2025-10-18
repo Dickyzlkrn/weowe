@@ -11,7 +11,7 @@ const Footer = () => {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
-      className="bg-black text-white border-t-4 border-[#00FF00]"
+      className="bg-black text-white border-t-4 border-[#ffffff]"
     >
       <div className="px-6 md:px-12 lg:px-20 py-12">
         <div className="max-w-[1920px] mx-auto">
@@ -46,7 +46,7 @@ const Footer = () => {
               <p className="text-xs font-mono tracking-[0.2em] text-gray-500 mb-3">CONTACT</p>
               <motion.a
                 href={`mailto:${mockContact.email}`}
-                className="text-lg font-bold hover:text-[#00FF00] transition-colors block mb-2"
+                className="text-lg font-bold hover:text-[#002fff] transition-colors block mb-2"
                 whileHover={{
                   x: 10,
                   scale: 1.05,
@@ -66,7 +66,7 @@ const Footer = () => {
               <div className="space-y-2">
                 <motion.a
                   href="#"
-                  className="text-lg font-bold hover:text-[#00FF00] transition-colors block"
+                  className="text-lg font-bold hover:text-[#0037ff] transition-colors block"
                   whileHover={{
                     x: 10,
                     scale: 1.05,
@@ -76,7 +76,7 @@ const Footer = () => {
                 </motion.a>
                 <motion.a
                   href="#"
-                  className="text-lg font-bold hover:text-[#00FF00] transition-colors block"
+                  className="text-lg font-bold hover:text-[#4c00ff] transition-colors block"
                   whileHover={{
                     x: 10,
                     scale: 1.05,
@@ -107,7 +107,7 @@ const Footer = () => {
                 ease: "easeInOut",
               }}
             >
-              © {currentYear} ALEX RIVERA. ALL RIGHTS RESERVED.
+              © {currentYear} Dicky zulkarnaen. ALL RIGHTS RESERVED.
             </motion.p>
             <motion.p
               className="text-xs font-mono tracking-[0.15em] opacity-50"

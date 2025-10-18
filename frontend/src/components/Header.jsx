@@ -23,7 +23,7 @@ const Header = () => {
       <div className="px-6 md:px-12 lg:px-20 py-6 flex items-center justify-between">
         <Link to="/">
           <motion.div
-            className="text-2xl md:text-3xl font-black tracking-tighter hover:text-[#00FF00] transition-colors cursor-pointer"
+            className="text-2xl md:text-3xl font-black tracking-tighter hover:text-[#002fff] transition-colors cursor-pointer"
             whileHover={{
               scale: 1.1,
               rotate: [0, -5, 5, 0],
@@ -31,7 +31,12 @@ const Header = () => {
             whileTap={{ scale: 0.9 }}
             transition={{ duration: 0.3 }}
           >
-            AR
+            <img
+              src={process.env.PUBLIC_URL + '/DKZSTUDIO.png'}
+              alt="Dicky Zulkarnaen"
+              className="h-8 md:h-10 object-contain"
+              style={{ display: 'block' }}
+            />
           </motion.div>
         </Link>
 
@@ -43,8 +48,8 @@ const Header = () => {
               to={link.path}
             >
               <motion.div
-                className={`text-sm font-mono tracking-[0.15em] hover:text-[#00FF00] transition-colors relative ${
-                  location.pathname === link.path ? 'text-[#00FF00]' : ''
+                className={`text-sm font-mono tracking-[0.15em] hover:text-[#2b00ff] transition-colors relative ${
+                  location.pathname === link.path ? 'text-[#0800ff]' : ''
                 }`}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -57,7 +62,7 @@ const Header = () => {
                 {link.name}
                 {location.pathname === link.path && (
                   <motion.div
-                    className="absolute -bottom-2 left-0 w-full h-0.5 bg-[#00FF00]"
+                    className="absolute -bottom-2 left-0 w-full h-0.5 bg-[#ffffff]"
                     layoutId="activeNav"
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   />
@@ -70,7 +75,7 @@ const Header = () => {
         {/* Mobile Menu Button */}
         <motion.button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden text-white hover:text-[#00FF00] transition-colors"
+          className="md:hidden text-white hover:text-[#fb00ff] transition-colors"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
@@ -105,8 +110,8 @@ const Header = () => {
                     animate={{ x: 0, opacity: 1 }}
                     exit={{ x: -50, opacity: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className={`text-2xl font-black tracking-tighter hover:text-[#00FF00] transition-colors ${
-                      location.pathname === link.path ? 'text-[#00FF00]' : ''
+                    className={`text-2xl font-black tracking-tighter hover:text-[#ffffff] transition-colors ${
+                      location.pathname === link.path ? 'text-[#ffffff]' : ''
                     }`}
                     whileHover={{
                       x: 10,
