@@ -90,45 +90,130 @@ const Home = () => {
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20 py-20 border-b-4 border-[#00FF00]"
+        transition={{ duration: 1.2 }}
+        className="min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20 py-20 border-b-4 border-[#00FF00] relative"
       >
-        <div className="max-w-[1920px] mx-auto w-full">
+        {/* Animated background grid */}
+        <motion.div
+          className="absolute inset-0 opacity-5"
+          style={{
+            backgroundImage: 'linear-gradient(#00FF00 1px, transparent 1px), linear-gradient(90deg, #00FF00 1px, transparent 1px)',
+            backgroundSize: '50px 50px',
+          }}
+          animate={{
+            backgroundPosition: ['0px 0px', '50px 50px'],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
+
+        <div className="max-w-[1920px] mx-auto w-full relative z-10">
           <motion.div
-            initial={{ x: -50, opacity: 0 }}
+            initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
+            transition={{ 
+              delay: 0.3, 
+              duration: 0.8,
+              type: "spring",
+              stiffness: 60,
+            }}
             className="mb-8"
           >
-            <p className="text-[#00FF00] font-mono text-sm md:text-base tracking-[0.2em] mb-4">
+            <motion.p
+              className="text-[#00FF00] font-mono text-sm md:text-base tracking-[0.2em] mb-4"
+              animate={{
+                opacity: [0.7, 1, 0.7],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
               GRAPHIC DESIGNER / ART DIRECTOR
-            </p>
+            </motion.p>
           </motion.div>
           
-          <motion.h1
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-[12vw] md:text-[10vw] lg:text-[9rem] xl:text-[12rem] font-black leading-[0.85] tracking-tighter mb-8"
-            style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
           >
-            {mockAbout.name}
-          </motion.h1>
+            <h1 className="text-[12vw] md:text-[10vw] lg:text-[9rem] xl:text-[12rem] font-black leading-[0.85] tracking-tighter mb-8"
+              style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+            >
+              {mockAbout.name.split('').map((char, index) => (
+                <motion.span
+                  key={index}
+                  variants={letterVariants}
+                  className="inline-block"
+                  whileHover={{
+                    scale: 1.1,
+                    color: "#00FF00",
+                    transition: { duration: 0.2 },
+                  }}
+                >
+                  {char === ' ' ? '\u00A0' : char}
+                </motion.span>
+              ))}
+            </h1>
+          </motion.div>
           
           <motion.div
-            initial={{ x: 50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.7, duration: 0.6 }}
+            initial={{ x: 100, opacity: 0, scale: 0.9 }}
+            animate={{ x: 0, opacity: 1, scale: 1 }}
+            transition={{ 
+              delay: 0.9, 
+              duration: 0.8,
+              type: "spring",
+              stiffness: 50,
+            }}
             className="max-w-2xl ml-auto"
           >
-            <p className="text-xl md:text-2xl font-bold tracking-tight mb-8">
+            <motion.p
+              className="text-xl md:text-2xl font-bold tracking-tight mb-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.2 }}
+            >
               {mockAbout.bio}
-            </p>
+            </motion.p>
             <Link to="/projects">
-              <button className="bg-[#00FF00] text-black px-8 py-4 text-sm font-mono tracking-[0.15em] hover:bg-white transition-colors duration-200 border-2 border-[#00FF00] hover:border-white flex items-center gap-3 group">
+              <motion.button
+                className="bg-[#00FF00] text-black px-8 py-4 text-sm font-mono tracking-[0.15em] hover:bg-white transition-colors duration-200 border-2 border-[#00FF00] hover:border-white flex items-center gap-3 group"
+                whileHover={{ 
+                  scale: 1.05,
+                  boxShadow: "0 0 30px rgba(0, 255, 0, 0.5)",
+                }}
+                whileTap={{ scale: 0.95 }}
+                animate={{
+                  y: [0, -5, 0],
+                }}
+                transition={{
+                  y: {
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  },
+                }}
+              >
                 VIEW WORK
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
+                <motion.div
+                  animate={{
+                    x: [0, 5, 0],
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                >
+                  <ArrowRight className="w-5 h-5" />
+                </motion.div>
+              </motion.button>
             </Link>
           </motion.div>
         </div>
