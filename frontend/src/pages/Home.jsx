@@ -220,59 +220,158 @@ const Home = () => {
       </motion.section>
 
       {/* Featured Projects Section */}
-      <section className="px-6 md:px-12 lg:px-20 py-20 md:py-32">
+      <section className="px-6 md:px-12 lg:px-20 py-20 md:py-32 relative">
         <div className="max-w-[1920px] mx-auto">
           <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-6xl md:text-8xl lg:text-9xl font-black mb-16 tracking-tighter"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ 
+              duration: 0.8,
+              type: "spring",
+              stiffness: 60,
+            }}
+            className="text-6xl md:text-8xl lg:text-9xl font-black mb-16 tracking-tighter relative"
             style={{ fontFamily: 'Space Grotesk, sans-serif' }}
           >
-            SELECTED<br />WORK
+            <motion.span
+              className="inline-block"
+              animate={{
+                y: [0, -10, 0],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              SELECTED
+            </motion.span>
+            <br />
+            <motion.span
+              className="inline-block"
+              animate={{
+                y: [0, 10, 0],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.2,
+              }}
+            >
+              WORK
+            </motion.span>
+            
+            {/* Animated underline */}
+            <motion.div
+              className="absolute bottom-0 left-0 h-2 bg-[#00FF00]"
+              initial={{ width: 0 }}
+              whileInView={{ width: "30%" }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.5 }}
+            />
           </motion.h2>
           
           <div className="space-y-0">
             {mockProjects.map((project, index) => (
               <motion.div
                 key={project.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="border-t-2 border-white py-8 md:py-12 hover:bg-white hover:text-black transition-colors duration-300 px-6 md:px-8 group cursor-pointer"
+                custom={index}
+                variants={projectVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                whileHover={{
+                  scale: 1.02,
+                  x: 10,
+                  transition: { duration: 0.3 },
+                }}
+                className="border-t-2 border-white py-8 md:py-12 hover:bg-white hover:text-black transition-all duration-300 px-6 md:px-8 group cursor-pointer relative overflow-hidden"
               >
+                {/* Animated background on hover */}
+                <motion.div
+                  className="absolute inset-0 bg-[#00FF00]"
+                  initial={{ x: "-100%" }}
+                  whileHover={{ x: 0 }}
+                  transition={{ duration: 0.4 }}
+                  style={{ zIndex: -1 }}
+                />
+
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 md:gap-8">
                   <div className="flex-1">
-                    <h3 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-4">
+                    <motion.h3
+                      className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-4"
+                      whileHover={{
+                        x: 20,
+                        transition: { duration: 0.3 },
+                      }}
+                    >
                       {project.title}
-                    </h3>
-                    <p className="text-lg md:text-xl opacity-70 group-hover:opacity-100 max-w-2xl">
+                    </motion.h3>
+                    <motion.p
+                      className="text-lg md:text-xl opacity-70 group-hover:opacity-100 max-w-2xl"
+                      initial={{ opacity: 0.7 }}
+                      whileHover={{ opacity: 1 }}
+                    >
                       {project.description}
-                    </p>
+                    </motion.p>
                   </div>
                   
                   <div className="flex flex-col items-start md:items-end gap-4">
-                    <span className="text-sm font-mono tracking-[0.2em] opacity-50 group-hover:opacity-100">
+                    <motion.span
+                      className="text-sm font-mono tracking-[0.2em] opacity-50 group-hover:opacity-100"
+                      animate={{
+                        opacity: [0.5, 1, 0.5],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        delay: index * 0.2,
+                      }}
+                    >
                       {project.year}
-                    </span>
+                    </motion.span>
                     <div className="flex flex-wrap gap-2">
                       {project.tags.map((tag, i) => (
-                        <span
+                        <motion.span
                           key={i}
-                          className="border-2 border-current px-3 py-1 text-xs font-mono tracking-[0.15em] group-hover:border-black group-hover:bg-[#00FF00] group-hover:text-black transition-colors"
+                          className="border-2 border-current px-3 py-1 text-xs font-mono tracking-[0.15em] group-hover:border-black group-hover:bg-black group-hover:text-[#00FF00] transition-colors"
+                          whileHover={{
+                            scale: 1.1,
+                            rotate: [-1, 1, -1],
+                          }}
+                          transition={{
+                            duration: 0.3,
+                          }}
                         >
                           {tag}
-                        </span>
+                        </motion.span>
                       ))}
                     </div>
                   </div>
                 </div>
+
+                {/* Animated arrow indicator */}
+                <motion.div
+                  className="absolute right-8 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileHover={{ opacity: 1, x: 0 }}
+                >
+                  <ArrowRight className="w-12 h-12" />
+                </motion.div>
               </motion.div>
             ))}
           </div>
           
-          <div className="border-t-2 border-white"></div>
+          <motion.div
+            className="border-t-2 border-white"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            style={{ transformOrigin: "left" }}
+          />
         </div>
       </section>
 
